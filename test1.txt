@@ -1,0 +1,875 @@
+The cat Command
+
+
+ 
+
+cat is one of the most frequently used commands on Unix-like operating systems. It has three related functions with regard to text files: displaying them, combining copies of them and creating new ones. 
+
+cat's general syntax is 
+
+
+cat [options] [filenames] [-] [filenames] 
+
+The square brackets indicate that the enclosed items are optional. 
+
+Reading Files 
+
+The most common use of cat is to read the contents of files, and cat is often the most convenient program for this purpose. All that is necessary to open a text file for viewing on the display monitor is to type the word cat followed by a space and the name of the file and then press the ENTER key. For example, the following will display the contents of a file named file1: 
+
+
+cat file1 
+
+The standard output (i.e., default destination of the output) for cat, as is generally the case for other command line (i.e., all-text mode) programs, is the monitor screen. However, it can be redirected from the screen, for example, to another file to be written to that file or to another command to use as the input for that command. 
+
+In the following example, the standard output of cat is redirected using the output redirection operator (which is represented by a rightward pointing angular bracket) to file2: 
+
+
+cat file1 > file2 
+
+That is, the output from cat is written to file2 instead of being displayed on the monitor screen. 
+
+The standard output could instead be redirected using a pipe (represented by a vertical bar) to a filter (i.e., a program that transforms data in some meaningful way) for further processing. For example, if the file is too large for all of the text to fit on the monitor screen simultaneously, as is frequently the case, the text will scroll down the screen at high speed and be very difficult to read. This problem is easily solved by piping the output to the filter less, i.e., 
+
+
+cat file1 | less 
+
+This allows the user to advance the contents of the file one screenful at a time by pressing the space bar and to move backwards by pressing the b key. The user can exit from less by pressing the q key. 
+
+The standard input (i.e., the default source of input data) for cat, as is generally the case for other commands on Unix-like systems, is the keyboard. That is, if no file is specified for it to open, cat will read whatever is typed in on the keyboard. 
+
+Typing the command cat followed by the output redirection operator and a file name on the same line, pressing ENTER to move to the next line, then typing some text and finally pressing ENTER again causes the text to be written to that file. Thus, in the following example the text that is typed on the second line will be written to a file named felines: 
+
+
+cat > felines
+This is not about a feline.
+
+
+The program is terminated and the normal command prompt is restored by pressing the CONTROL and d keys simultaneously. 
+
+Repeating the above example without using a redirection operator and specifying a destination file, i.e., 
+
+
+cat
+This is not about a feline.
+
+
+causes the text to be sent to standard output, i.e., to be repeated on the monitor screen. 
+
+Concatenation 
+
+The second role of cat is concatenation (i.e., stringing together) of copies of the contents of files. (This is the source of cat's curious name.) Because the concatenation occurs only to the copies, there is no effect on the original files. 
+
+For example, the following command will concatenate copies of the contents of the three files file1, file2 and file3: 
+
+
+cat file1 file2 file3 
+
+The contents of each file will be displayed on the monitor screen (which, again, is standard output, and thus the destination of the output in the absence of redirection) starting on a new line and in the order that the file names appear in the command. This output could just as easily be redirected using the output redirection operator to another file, such as file4, using the following: 
+
+
+cat file1 file2 file3 > file4 
+
+In the next example, the output of cat is piped to the sort filter in order to alphabetize the lines of text after concatenation and prior to writing to file4: 
+
+
+cat file1 file2 file3 | sort > file4 
+
+
+File Creation 
+
+The third use for cat is file creation. For small files this is often easier than using vi, gedit or other text editors. It is accomplished by typing cat followed by the output redirection operator and the name of the file to be created, then pressing ENTER and finally simultaneously pressing the CONTROL and d keys. For example, a new file named file1 can be created by typing 
+
+
+cat > file1 
+
+then pressing the ENTER key and finally simultaneously pressing the CONTROL and d keys. 
+
+If a file named file1 already exists, it will be overwritten (i.e., all of its contents will be erased) by the new, empty file with the same name. Thus the cautious user might prefer to instead use the append operator (represented by two successive rightward pointing angular brackets) in order to prevent unintended erasure. That is, 
+
+
+cat >> file1 
+
+That is, if an attempt is made to create a file by using cat and the append operator, and the new file has the same name as an existing file, the existing file is, in fact, preserved rather than overwritten, and any new text is added to the end of the existing file. 
+
+Text can be entered at the time of file creation by typing it in after pressing the ENTER key. Any amount of text can be typed, including text on multiple lines. 
+
+cat can also be used to simultaneously create a new file and transfer to it the data from an existing file. This is accomplished by typing cat, the name of the file from which the output will come, the output redirection operator and the name of the file to be created. Then pressing ENTER causes the new file to be created and written to. For example, typing the following and then pressing ENTER creates a new file named file2 that contains a copy of the contents of file1: 
+
+
+cat file1 > file2 
+
+There is no effect on the contents of file1. (The same thing can, of course, be accomplished just as easily using cp command, which is used to copy files, i.e., cp file1 file2, but the above example does illustrate the great versatility of cat.) 
+
+A slight modification to the above procedure makes it possible to create a new file and write text into it from both another file and the keyboard. A hyphen surrounded by spaces is added before the input file if the typed-in text is to come before the text from the input file, and it is added after the input file if the typed-in text is to go after the text from the input file. Thus, for example, to create a new file file6 that consists of text typed in from the keyboard followed by the contents of file5, first enter the following: 
+
+
+cat - file5 > file6 
+
+Or to create a new file file8 that consists of the contents of file7 followed by text typed in from the keyboard, first enter the following: 
+
+
+cat file7 - > file8 
+
+In either case, then press ENTER to move to a new line and type the desired text on any number of lines. Finally press ENTER once more followed by pressing the CONTROL and d keys simultaneously to execute (i.e., run) the command. 
+
+An example of a practical application for this use of cat is the creation of form letters (or other documents) for which only the top parts (e.g., dates and names) are customized for each recipient. 
+
+The cat Command
+
+
+ 
+
+cat is one of the most frequently used commands on Unix-like operating systems. It has three related functions with regard to text files: displaying them, combining copies of them and creating new ones. 
+
+cat's general syntax is 
+
+
+cat [options] [filenames] [-] [filenames] 
+
+The square brackets indicate that the enclosed items are optional. 
+
+Reading Files 
+
+The most common use of cat is to read the contents of files, and cat is often the most convenient program for this purpose. All that is necessary to open a text file for viewing on the display monitor is to type the word cat followed by a space and the name of the file and then press the ENTER key. For example, the following will display the contents of a file named file1: 
+
+
+cat file1 
+
+The standard output (i.e., default destination of the output) for cat, as is generally the case for other command line (i.e., all-text mode) programs, is the monitor screen. However, it can be redirected from the screen, for example, to another file to be written to that file or to another command to use as the input for that command. 
+
+In the following example, the standard output of cat is redirected using the output redirection operator (which is represented by a rightward pointing angular bracket) to file2: 
+
+
+cat file1 > file2 
+
+That is, the output from cat is written to file2 instead of being displayed on the monitor screen. 
+
+The standard output could instead be redirected using a pipe (represented by a vertical bar) to a filter (i.e., a program that transforms data in some meaningful way) for further processing. For example, if the file is too large for all of the text to fit on the monitor screen simultaneously, as is frequently the case, the text will scroll down the screen at high speed and be very difficult to read. This problem is easily solved by piping the output to the filter less, i.e., 
+
+
+cat file1 | less 
+
+This allows the user to advance the contents of the file one screenful at a time by pressing the space bar and to move backwards by pressing the b key. The user can exit from less by pressing the q key. 
+
+The standard input (i.e., the default source of input data) for cat, as is generally the case for other commands on Unix-like systems, is the keyboard. That is, if no file is specified for it to open, cat will read whatever is typed in on the keyboard. 
+
+Typing the command cat followed by the output redirection operator and a file name on the same line, pressing ENTER to move to the next line, then typing some text and finally pressing ENTER again causes the text to be written to that file. Thus, in the following example the text that is typed on the second line will be written to a file named felines: 
+
+
+cat > felines
+This is not about a feline.
+
+
+The program is terminated and the normal command prompt is restored by pressing the CONTROL and d keys simultaneously. 
+
+Repeating the above example without using a redirection operator and specifying a destination file, i.e., 
+
+
+cat
+This is not about a feline.
+
+
+causes the text to be sent to standard output, i.e., to be repeated on the monitor screen. 
+
+Concatenation 
+
+The second role of cat is concatenation (i.e., stringing together) of copies of the contents of files. (This is the source of cat's curious name.) Because the concatenation occurs only to the copies, there is no effect on the original files. 
+
+For example, the following command will concatenate copies of the contents of the three files file1, file2 and file3: 
+
+
+cat file1 file2 file3 
+
+The contents of each file will be displayed on the monitor screen (which, again, is standard output, and thus the destination of the output in the absence of redirection) starting on a new line and in the order that the file names appear in the command. This output could just as easily be redirected using the output redirection operator to another file, such as file4, using the following: 
+
+
+cat file1 file2 file3 > file4 
+
+In the next example, the output of cat is piped to the sort filter in order to alphabetize the lines of text after concatenation and prior to writing to file4: 
+
+
+cat file1 file2 file3 | sort > file4 
+
+
+File Creation 
+
+The third use for cat is file creation. For small files this is often easier than using vi, gedit or other text editors. It is accomplished by typing cat followed by the output redirection operator and the name of the file to be created, then pressing ENTER and finally simultaneously pressing the CONTROL and d keys. For example, a new file named file1 can be created by typing 
+
+
+cat > file1 
+
+then pressing the ENTER key and finally simultaneously pressing the CONTROL and d keys. 
+
+If a file named file1 already exists, it will be overwritten (i.e., all of its contents will be erased) by the new, empty file with the same name. Thus the cautious user might prefer to instead use the append operator (represented by two successive rightward pointing angular brackets) in order to prevent unintended erasure. That is, 
+
+
+cat >> file1 
+
+That is, if an attempt is made to create a file by using cat and the append operator, and the new file has the same name as an existing file, the existing file is, in fact, preserved rather than overwritten, and any new text is added to the end of the existing file. 
+
+Text can be entered at the time of file creation by typing it in after pressing the ENTER key. Any amount of text can be typed, including text on multiple lines. 
+
+cat can also be used to simultaneously create a new file and transfer to it the data from an existing file. This is accomplished by typing cat, the name of the file from which the output will come, the output redirection operator and the name of the file to be created. Then pressing ENTER causes the new file to be created and written to. For example, typing the following and then pressing ENTER creates a new file named file2 that contains a copy of the contents of file1: 
+
+
+cat file1 > file2 
+
+There is no effect on the contents of file1. (The same thing can, of course, be accomplished just as easily using cp command, which is used to copy files, i.e., cp file1 file2, but the above example does illustrate the great versatility of cat.) 
+
+A slight modification to the above procedure makes it possible to create a new file and write text into it from both another file and the keyboard. A hyphen surrounded by spaces is added before the input file if the typed-in text is to come before the text from the input file, and it is added after the input file if the typed-in text is to go after the text from the input file. Thus, for example, to create a new file file6 that consists of text typed in from the keyboard followed by the contents of file5, first enter the following: 
+
+
+cat - file5 > file6 
+
+Or to create a new file file8 that consists of the contents of file7 followed by text typed in from the keyboard, first enter the following: 
+
+
+cat file7 - > file8 
+
+In either case, then press ENTER to move to a new line and type the desired text on any number of lines. Finally press ENTER once more followed by pressing the CONTROL and d keys simultaneously to execute (i.e., run) the command. 
+
+An example of a practical application for this use of cat is the creation of form letters (or other documents) for which only the top parts (e.g., dates and names) are customized for each recipient. 
+
+The cat Command
+
+
+ 
+
+cat is one of the most frequently used commands on Unix-like operating systems. It has three related functions with regard to text files: displaying them, combining copies of them and creating new ones. 
+
+cat's general syntax is 
+
+
+cat [options] [filenames] [-] [filenames] 
+
+The square brackets indicate that the enclosed items are optional. 
+
+Reading Files 
+
+The most common use of cat is to read the contents of files, and cat is often the most convenient program for this purpose. All that is necessary to open a text file for viewing on the display monitor is to type the word cat followed by a space and the name of the file and then press the ENTER key. For example, the following will display the contents of a file named file1: 
+
+
+cat file1 
+
+The standard output (i.e., default destination of the output) for cat, as is generally the case for other command line (i.e., all-text mode) programs, is the monitor screen. However, it can be redirected from the screen, for example, to another file to be written to that file or to another command to use as the input for that command. 
+
+In the following example, the standard output of cat is redirected using the output redirection operator (which is represented by a rightward pointing angular bracket) to file2: 
+
+
+cat file1 > file2 
+
+That is, the output from cat is written to file2 instead of being displayed on the monitor screen. 
+
+The standard output could instead be redirected using a pipe (represented by a vertical bar) to a filter (i.e., a program that transforms data in some meaningful way) for further processing. For example, if the file is too large for all of the text to fit on the monitor screen simultaneously, as is frequently the case, the text will scroll down the screen at high speed and be very difficult to read. This problem is easily solved by piping the output to the filter less, i.e., 
+
+
+cat file1 | less 
+
+This allows the user to advance the contents of the file one screenful at a time by pressing the space bar and to move backwards by pressing the b key. The user can exit from less by pressing the q key. 
+
+The standard input (i.e., the default source of input data) for cat, as is generally the case for other commands on Unix-like systems, is the keyboard. That is, if no file is specified for it to open, cat will read whatever is typed in on the keyboard. 
+
+Typing the command cat followed by the output redirection operator and a file name on the same line, pressing ENTER to move to the next line, then typing some text and finally pressing ENTER again causes the text to be written to that file. Thus, in the following example the text that is typed on the second line will be written to a file named felines: 
+
+
+cat > felines
+This is not about a feline.
+
+
+The program is terminated and the normal command prompt is restored by pressing the CONTROL and d keys simultaneously. 
+
+Repeating the above example without using a redirection operator and specifying a destination file, i.e., 
+
+
+cat
+This is not about a feline.
+
+
+causes the text to be sent to standard output, i.e., to be repeated on the monitor screen. 
+
+Concatenation 
+
+The second role of cat is concatenation (i.e., stringing together) of copies of the contents of files. (This is the source of cat's curious name.) Because the concatenation occurs only to the copies, there is no effect on the original files. 
+
+For example, the following command will concatenate copies of the contents of the three files file1, file2 and file3: 
+
+
+cat file1 file2 file3 
+
+The contents of each file will be displayed on the monitor screen (which, again, is standard output, and thus the destination of the output in the absence of redirection) starting on a new line and in the order that the file names appear in the command. This output could just as easily be redirected using the output redirection operator to another file, such as file4, using the following: 
+
+
+cat file1 file2 file3 > file4 
+
+In the next example, the output of cat is piped to the sort filter in order to alphabetize the lines of text after concatenation and prior to writing to file4: 
+
+
+cat file1 file2 file3 | sort > file4 
+
+
+File Creation 
+
+The third use for cat is file creation. For small files this is often easier than using vi, gedit or other text editors. It is accomplished by typing cat followed by the output redirection operator and the name of the file to be created, then pressing ENTER and finally simultaneously pressing the CONTROL and d keys. For example, a new file named file1 can be created by typing 
+
+
+cat > file1 
+
+then pressing the ENTER key and finally simultaneously pressing the CONTROL and d keys. 
+
+If a file named file1 already exists, it will be overwritten (i.e., all of its contents will be erased) by the new, empty file with the same name. Thus the cautious user might prefer to instead use the append operator (represented by two successive rightward pointing angular brackets) in order to prevent unintended erasure. That is, 
+
+
+cat >> file1 
+
+That is, if an attempt is made to create a file by using cat and the append operator, and the new file has the same name as an existing file, the existing file is, in fact, preserved rather than overwritten, and any new text is added to the end of the existing file. 
+
+Text can be entered at the time of file creation by typing it in after pressing the ENTER key. Any amount of text can be typed, including text on multiple lines. 
+
+cat can also be used to simultaneously create a new file and transfer to it the data from an existing file. This is accomplished by typing cat, the name of the file from which the output will come, the output redirection operator and the name of the file to be created. Then pressing ENTER causes the new file to be created and written to. For example, typing the following and then pressing ENTER creates a new file named file2 that contains a copy of the contents of file1: 
+
+
+cat file1 > file2 
+
+There is no effect on the contents of file1. (The same thing can, of course, be accomplished just as easily using cp command, which is used to copy files, i.e., cp file1 file2, but the above example does illustrate the great versatility of cat.) 
+
+A slight modification to the above procedure makes it possible to create a new file and write text into it from both another file and the keyboard. A hyphen surrounded by spaces is added before the input file if the typed-in text is to come before the text from the input file, and it is added after the input file if the typed-in text is to go after the text from the input file. Thus, for example, to create a new file file6 that consists of text typed in from the keyboard followed by the contents of file5, first enter the following: 
+
+
+cat - file5 > file6 
+
+Or to create a new file file8 that consists of the contents of file7 followed by text typed in from the keyboard, first enter the following: 
+
+
+cat file7 - > file8 
+
+In either case, then press ENTER to move to a new line and type the desired text on any number of lines. Finally press ENTER once more followed by pressing the CONTROL and d keys simultaneously to execute (i.e., run) the command. 
+
+An example of a practical application for this use of cat is the creation of form letters (or other documents) for which only the top parts (e.g., dates and names) are customized for each recipient. 
+
+The cat Command
+
+
+ 
+
+cat is one of the most frequently used commands on Unix-like operating systems. It has three related functions with regard to text files: displaying them, combining copies of them and creating new ones. 
+
+cat's general syntax is 
+
+
+cat [options] [filenames] [-] [filenames] 
+
+The square brackets indicate that the enclosed items are optional. 
+
+Reading Files 
+
+The most common use of cat is to read the contents of files, and cat is often the most convenient program for this purpose. All that is necessary to open a text file for viewing on the display monitor is to type the word cat followed by a space and the name of the file and then press the ENTER key. For example, the following will display the contents of a file named file1: 
+
+
+cat file1 
+
+The standard output (i.e., default destination of the output) for cat, as is generally the case for other command line (i.e., all-text mode) programs, is the monitor screen. However, it can be redirected from the screen, for example, to another file to be written to that file or to another command to use as the input for that command. 
+
+In the following example, the standard output of cat is redirected using the output redirection operator (which is represented by a rightward pointing angular bracket) to file2: 
+
+
+cat file1 > file2 
+
+That is, the output from cat is written to file2 instead of being displayed on the monitor screen. 
+
+The standard output could instead be redirected using a pipe (represented by a vertical bar) to a filter (i.e., a program that transforms data in some meaningful way) for further processing. For example, if the file is too large for all of the text to fit on the monitor screen simultaneously, as is frequently the case, the text will scroll down the screen at high speed and be very difficult to read. This problem is easily solved by piping the output to the filter less, i.e., 
+
+
+cat file1 | less 
+
+This allows the user to advance the contents of the file one screenful at a time by pressing the space bar and to move backwards by pressing the b key. The user can exit from less by pressing the q key. 
+
+The standard input (i.e., the default source of input data) for cat, as is generally the case for other commands on Unix-like systems, is the keyboard. That is, if no file is specified for it to open, cat will read whatever is typed in on the keyboard. 
+
+Typing the command cat followed by the output redirection operator and a file name on the same line, pressing ENTER to move to the next line, then typing some text and finally pressing ENTER again causes the text to be written to that file. Thus, in the following example the text that is typed on the second line will be written to a file named felines: 
+
+
+cat > felines
+This is not about a feline.
+
+
+The program is terminated and the normal command prompt is restored by pressing the CONTROL and d keys simultaneously. 
+
+Repeating the above example without using a redirection operator and specifying a destination file, i.e., 
+
+
+cat
+This is not about a feline.
+
+
+causes the text to be sent to standard output, i.e., to be repeated on the monitor screen. 
+
+Concatenation 
+
+The second role of cat is concatenation (i.e., stringing together) of copies of the contents of files. (This is the source of cat's curious name.) Because the concatenation occurs only to the copies, there is no effect on the original files. 
+
+For example, the following command will concatenate copies of the contents of the three files file1, file2 and file3: 
+
+
+cat file1 file2 file3 
+
+The contents of each file will be displayed on the monitor screen (which, again, is standard output, and thus the destination of the output in the absence of redirection) starting on a new line and in the order that the file names appear in the command. This output could just as easily be redirected using the output redirection operator to another file, such as file4, using the following: 
+
+
+cat file1 file2 file3 > file4 
+
+In the next example, the output of cat is piped to the sort filter in order to alphabetize the lines of text after concatenation and prior to writing to file4: 
+
+
+cat file1 file2 file3 | sort > file4 
+
+
+File Creation 
+
+The third use for cat is file creation. For small files this is often easier than using vi, gedit or other text editors. It is accomplished by typing cat followed by the output redirection operator and the name of the file to be created, then pressing ENTER and finally simultaneously pressing the CONTROL and d keys. For example, a new file named file1 can be created by typing 
+
+
+cat > file1 
+
+then pressing the ENTER key and finally simultaneously pressing the CONTROL and d keys. 
+
+If a file named file1 already exists, it will be overwritten (i.e., all of its contents will be erased) by the new, empty file with the same name. Thus the cautious user might prefer to instead use the append operator (represented by two successive rightward pointing angular brackets) in order to prevent unintended erasure. That is, 
+
+
+cat >> file1 
+
+That is, if an attempt is made to create a file by using cat and the append operator, and the new file has the same name as an existing file, the existing file is, in fact, preserved rather than overwritten, and any new text is added to the end of the existing file. 
+
+Text can be entered at the time of file creation by typing it in after pressing the ENTER key. Any amount of text can be typed, including text on multiple lines. 
+
+cat can also be used to simultaneously create a new file and transfer to it the data from an existing file. This is accomplished by typing cat, the name of the file from which the output will come, the output redirection operator and the name of the file to be created. Then pressing ENTER causes the new file to be created and written to. For example, typing the following and then pressing ENTER creates a new file named file2 that contains a copy of the contents of file1: 
+
+
+cat file1 > file2 
+
+There is no effect on the contents of file1. (The same thing can, of course, be accomplished just as easily using cp command, which is used to copy files, i.e., cp file1 file2, but the above example does illustrate the great versatility of cat.) 
+
+A slight modification to the above procedure makes it possible to create a new file and write text into it from both another file and the keyboard. A hyphen surrounded by spaces is added before the input file if the typed-in text is to come before the text from the input file, and it is added after the input file if the typed-in text is to go after the text from the input file. Thus, for example, to create a new file file6 that consists of text typed in from the keyboard followed by the contents of file5, first enter the following: 
+
+
+cat - file5 > file6 
+
+Or to create a new file file8 that consists of the contents of file7 followed by text typed in from the keyboard, first enter the following: 
+
+
+cat file7 - > file8 
+
+In either case, then press ENTER to move to a new line and type the desired text on any number of lines. Finally press ENTER once more followed by pressing the CONTROL and d keys simultaneously to execute (i.e., run) the command. 
+
+An example of a practical application for this use of cat is the creation of form letters (or other documents) for which only the top parts (e.g., dates and names) are customized for each recipient. 
+
+The cat Command
+
+
+ 
+
+cat is one of the most frequently used commands on Unix-like operating systems. It has three related functions with regard to text files: displaying them, combining copies of them and creating new ones. 
+
+cat's general syntax is 
+
+
+cat [options] [filenames] [-] [filenames] 
+
+The square brackets indicate that the enclosed items are optional. 
+
+Reading Files 
+
+The most common use of cat is to read the contents of files, and cat is often the most convenient program for this purpose. All that is necessary to open a text file for viewing on the display monitor is to type the word cat followed by a space and the name of the file and then press the ENTER key. For example, the following will display the contents of a file named file1: 
+
+
+cat file1 
+
+The standard output (i.e., default destination of the output) for cat, as is generally the case for other command line (i.e., all-text mode) programs, is the monitor screen. However, it can be redirected from the screen, for example, to another file to be written to that file or to another command to use as the input for that command. 
+
+In the following example, the standard output of cat is redirected using the output redirection operator (which is represented by a rightward pointing angular bracket) to file2: 
+
+
+cat file1 > file2 
+
+That is, the output from cat is written to file2 instead of being displayed on the monitor screen. 
+
+The standard output could instead be redirected using a pipe (represented by a vertical bar) to a filter (i.e., a program that transforms data in some meaningful way) for further processing. For example, if the file is too large for all of the text to fit on the monitor screen simultaneously, as is frequently the case, the text will scroll down the screen at high speed and be very difficult to read. This problem is easily solved by piping the output to the filter less, i.e., 
+
+
+cat file1 | less 
+
+This allows the user to advance the contents of the file one screenful at a time by pressing the space bar and to move backwards by pressing the b key. The user can exit from less by pressing the q key. 
+
+The standard input (i.e., the default source of input data) for cat, as is generally the case for other commands on Unix-like systems, is the keyboard. That is, if no file is specified for it to open, cat will read whatever is typed in on the keyboard. 
+
+Typing the command cat followed by the output redirection operator and a file name on the same line, pressing ENTER to move to the next line, then typing some text and finally pressing ENTER again causes the text to be written to that file. Thus, in the following example the text that is typed on the second line will be written to a file named felines: 
+
+
+cat > felines
+This is not about a feline.
+
+
+The program is terminated and the normal command prompt is restored by pressing the CONTROL and d keys simultaneously. 
+
+Repeating the above example without using a redirection operator and specifying a destination file, i.e., 
+
+
+cat
+This is not about a feline.
+
+
+causes the text to be sent to standard output, i.e., to be repeated on the monitor screen. 
+
+Concatenation 
+
+The second role of cat is concatenation (i.e., stringing together) of copies of the contents of files. (This is the source of cat's curious name.) Because the concatenation occurs only to the copies, there is no effect on the original files. 
+
+For example, the following command will concatenate copies of the contents of the three files file1, file2 and file3: 
+
+
+cat file1 file2 file3 
+
+The contents of each file will be displayed on the monitor screen (which, again, is standard output, and thus the destination of the output in the absence of redirection) starting on a new line and in the order that the file names appear in the command. This output could just as easily be redirected using the output redirection operator to another file, such as file4, using the following: 
+
+
+cat file1 file2 file3 > file4 
+
+In the next example, the output of cat is piped to the sort filter in order to alphabetize the lines of text after concatenation and prior to writing to file4: 
+
+
+cat file1 file2 file3 | sort > file4 
+
+
+File Creation 
+
+The third use for cat is file creation. For small files this is often easier than using vi, gedit or other text editors. It is accomplished by typing cat followed by the output redirection operator and the name of the file to be created, then pressing ENTER and finally simultaneously pressing the CONTROL and d keys. For example, a new file named file1 can be created by typing 
+
+
+cat > file1 
+
+then pressing the ENTER key and finally simultaneously pressing the CONTROL and d keys. 
+
+If a file named file1 already exists, it will be overwritten (i.e., all of its contents will be erased) by the new, empty file with the same name. Thus the cautious user might prefer to instead use the append operator (represented by two successive rightward pointing angular brackets) in order to prevent unintended erasure. That is, 
+
+
+cat >> file1 
+
+That is, if an attempt is made to create a file by using cat and the append operator, and the new file has the same name as an existing file, the existing file is, in fact, preserved rather than overwritten, and any new text is added to the end of the existing file. 
+
+Text can be entered at the time of file creation by typing it in after pressing the ENTER key. Any amount of text can be typed, including text on multiple lines. 
+
+cat can also be used to simultaneously create a new file and transfer to it the data from an existing file. This is accomplished by typing cat, the name of the file from which the output will come, the output redirection operator and the name of the file to be created. Then pressing ENTER causes the new file to be created and written to. For example, typing the following and then pressing ENTER creates a new file named file2 that contains a copy of the contents of file1: 
+
+
+cat file1 > file2 
+
+There is no effect on the contents of file1. (The same thing can, of course, be accomplished just as easily using cp command, which is used to copy files, i.e., cp file1 file2, but the above example does illustrate the great versatility of cat.) 
+
+A slight modification to the above procedure makes it possible to create a new file and write text into it from both another file and the keyboard. A hyphen surrounded by spaces is added before the input file if the typed-in text is to come before the text from the input file, and it is added after the input file if the typed-in text is to go after the text from the input file. Thus, for example, to create a new file file6 that consists of text typed in from the keyboard followed by the contents of file5, first enter the following: 
+
+
+cat - file5 > file6 
+
+Or to create a new file file8 that consists of the contents of file7 followed by text typed in from the keyboard, first enter the following: 
+
+
+cat file7 - > file8 
+
+In either case, then press ENTER to move to a new line and type the desired text on any number of lines. Finally press ENTER once more followed by pressing the CONTROL and d keys simultaneously to execute (i.e., run) the command. 
+
+An example of a practical application for this use of cat is the creation of form letters (or other documents) for which only the top parts (e.g., dates and names) are customized for each recipient. 
+
+The cat Command
+
+
+ 
+
+cat is one of the most frequently used commands on Unix-like operating systems. It has three related functions with regard to text files: displaying them, combining copies of them and creating new ones. 
+
+cat's general syntax is 
+
+
+cat [options] [filenames] [-] [filenames] 
+
+The square brackets indicate that the enclosed items are optional. 
+
+Reading Files 
+
+The most common use of cat is to read the contents of files, and cat is often the most convenient program for this purpose. All that is necessary to open a text file for viewing on the display monitor is to type the word cat followed by a space and the name of the file and then press the ENTER key. For example, the following will display the contents of a file named file1: 
+
+
+cat file1 
+
+The standard output (i.e., default destination of the output) for cat, as is generally the case for other command line (i.e., all-text mode) programs, is the monitor screen. However, it can be redirected from the screen, for example, to another file to be written to that file or to another command to use as the input for that command. 
+
+In the following example, the standard output of cat is redirected using the output redirection operator (which is represented by a rightward pointing angular bracket) to file2: 
+
+
+cat file1 > file2 
+
+That is, the output from cat is written to file2 instead of being displayed on the monitor screen. 
+
+The standard output could instead be redirected using a pipe (represented by a vertical bar) to a filter (i.e., a program that transforms data in some meaningful way) for further processing. For example, if the file is too large for all of the text to fit on the monitor screen simultaneously, as is frequently the case, the text will scroll down the screen at high speed and be very difficult to read. This problem is easily solved by piping the output to the filter less, i.e., 
+
+
+cat file1 | less 
+
+This allows the user to advance the contents of the file one screenful at a time by pressing the space bar and to move backwards by pressing the b key. The user can exit from less by pressing the q key. 
+
+The standard input (i.e., the default source of input data) for cat, as is generally the case for other commands on Unix-like systems, is the keyboard. That is, if no file is specified for it to open, cat will read whatever is typed in on the keyboard. 
+
+Typing the command cat followed by the output redirection operator and a file name on the same line, pressing ENTER to move to the next line, then typing some text and finally pressing ENTER again causes the text to be written to that file. Thus, in the following example the text that is typed on the second line will be written to a file named felines: 
+
+
+cat > felines
+This is not about a feline.
+
+
+The program is terminated and the normal command prompt is restored by pressing the CONTROL and d keys simultaneously. 
+
+Repeating the above example without using a redirection operator and specifying a destination file, i.e., 
+
+
+cat
+This is not about a feline.
+
+
+causes the text to be sent to standard output, i.e., to be repeated on the monitor screen. 
+
+Concatenation 
+
+The second role of cat is concatenation (i.e., stringing together) of copies of the contents of files. (This is the source of cat's curious name.) Because the concatenation occurs only to the copies, there is no effect on the original files. 
+
+For example, the following command will concatenate copies of the contents of the three files file1, file2 and file3: 
+
+
+cat file1 file2 file3 
+
+The contents of each file will be displayed on the monitor screen (which, again, is standard output, and thus the destination of the output in the absence of redirection) starting on a new line and in the order that the file names appear in the command. This output could just as easily be redirected using the output redirection operator to another file, such as file4, using the following: 
+
+
+cat file1 file2 file3 > file4 
+
+In the next example, the output of cat is piped to the sort filter in order to alphabetize the lines of text after concatenation and prior to writing to file4: 
+
+
+cat file1 file2 file3 | sort > file4 
+
+
+File Creation 
+
+The third use for cat is file creation. For small files this is often easier than using vi, gedit or other text editors. It is accomplished by typing cat followed by the output redirection operator and the name of the file to be created, then pressing ENTER and finally simultaneously pressing the CONTROL and d keys. For example, a new file named file1 can be created by typing 
+
+
+cat > file1 
+
+then pressing the ENTER key and finally simultaneously pressing the CONTROL and d keys. 
+
+If a file named file1 already exists, it will be overwritten (i.e., all of its contents will be erased) by the new, empty file with the same name. Thus the cautious user might prefer to instead use the append operator (represented by two successive rightward pointing angular brackets) in order to prevent unintended erasure. That is, 
+
+
+cat >> file1 
+
+That is, if an attempt is made to create a file by using cat and the append operator, and the new file has the same name as an existing file, the existing file is, in fact, preserved rather than overwritten, and any new text is added to the end of the existing file. 
+
+Text can be entered at the time of file creation by typing it in after pressing the ENTER key. Any amount of text can be typed, including text on multiple lines. 
+
+cat can also be used to simultaneously create a new file and transfer to it the data from an existing file. This is accomplished by typing cat, the name of the file from which the output will come, the output redirection operator and the name of the file to be created. Then pressing ENTER causes the new file to be created and written to. For example, typing the following and then pressing ENTER creates a new file named file2 that contains a copy of the contents of file1: 
+
+
+cat file1 > file2 
+
+There is no effect on the contents of file1. (The same thing can, of course, be accomplished just as easily using cp command, which is used to copy files, i.e., cp file1 file2, but the above example does illustrate the great versatility of cat.) 
+
+A slight modification to the above procedure makes it possible to create a new file and write text into it from both another file and the keyboard. A hyphen surrounded by spaces is added before the input file if the typed-in text is to come before the text from the input file, and it is added after the input file if the typed-in text is to go after the text from the input file. Thus, for example, to create a new file file6 that consists of text typed in from the keyboard followed by the contents of file5, first enter the following: 
+
+
+cat - file5 > file6 
+
+Or to create a new file file8 that consists of the contents of file7 followed by text typed in from the keyboard, first enter the following: 
+
+
+cat file7 - > file8 
+
+In either case, then press ENTER to move to a new line and type the desired text on any number of lines. Finally press ENTER once more followed by pressing the CONTROL and d keys simultaneously to execute (i.e., run) the command. 
+
+An example of a practical application for this use of cat is the creation of form letters (or other documents) for which only the top parts (e.g., dates and names) are customized for each recipient. 
+
+The cat Command
+
+
+ 
+
+cat is one of the most frequently used commands on Unix-like operating systems. It has three related functions with regard to text files: displaying them, combining copies of them and creating new ones. 
+
+cat's general syntax is 
+
+
+cat [options] [filenames] [-] [filenames] 
+
+The square brackets indicate that the enclosed items are optional. 
+
+Reading Files 
+
+The most common use of cat is to read the contents of files, and cat is often the most convenient program for this purpose. All that is necessary to open a text file for viewing on the display monitor is to type the word cat followed by a space and the name of the file and then press the ENTER key. For example, the following will display the contents of a file named file1: 
+
+
+cat file1 
+
+The standard output (i.e., default destination of the output) for cat, as is generally the case for other command line (i.e., all-text mode) programs, is the monitor screen. However, it can be redirected from the screen, for example, to another file to be written to that file or to another command to use as the input for that command. 
+
+In the following example, the standard output of cat is redirected using the output redirection operator (which is represented by a rightward pointing angular bracket) to file2: 
+
+
+cat file1 > file2 
+
+That is, the output from cat is written to file2 instead of being displayed on the monitor screen. 
+
+The standard output could instead be redirected using a pipe (represented by a vertical bar) to a filter (i.e., a program that transforms data in some meaningful way) for further processing. For example, if the file is too large for all of the text to fit on the monitor screen simultaneously, as is frequently the case, the text will scroll down the screen at high speed and be very difficult to read. This problem is easily solved by piping the output to the filter less, i.e., 
+
+
+cat file1 | less 
+
+This allows the user to advance the contents of the file one screenful at a time by pressing the space bar and to move backwards by pressing the b key. The user can exit from less by pressing the q key. 
+
+The standard input (i.e., the default source of input data) for cat, as is generally the case for other commands on Unix-like systems, is the keyboard. That is, if no file is specified for it to open, cat will read whatever is typed in on the keyboard. 
+
+Typing the command cat followed by the output redirection operator and a file name on the same line, pressing ENTER to move to the next line, then typing some text and finally pressing ENTER again causes the text to be written to that file. Thus, in the following example the text that is typed on the second line will be written to a file named felines: 
+
+
+cat > felines
+This is not about a feline.
+
+
+The program is terminated and the normal command prompt is restored by pressing the CONTROL and d keys simultaneously. 
+
+Repeating the above example without using a redirection operator and specifying a destination file, i.e., 
+
+
+cat
+This is not about a feline.
+
+
+causes the text to be sent to standard output, i.e., to be repeated on the monitor screen. 
+
+Concatenation 
+
+The second role of cat is concatenation (i.e., stringing together) of copies of the contents of files. (This is the source of cat's curious name.) Because the concatenation occurs only to the copies, there is no effect on the original files. 
+
+For example, the following command will concatenate copies of the contents of the three files file1, file2 and file3: 
+
+
+cat file1 file2 file3 
+
+The contents of each file will be displayed on the monitor screen (which, again, is standard output, and thus the destination of the output in the absence of redirection) starting on a new line and in the order that the file names appear in the command. This output could just as easily be redirected using the output redirection operator to another file, such as file4, using the following: 
+
+
+cat file1 file2 file3 > file4 
+
+In the next example, the output of cat is piped to the sort filter in order to alphabetize the lines of text after concatenation and prior to writing to file4: 
+
+
+cat file1 file2 file3 | sort > file4 
+
+
+File Creation 
+
+The third use for cat is file creation. For small files this is often easier than using vi, gedit or other text editors. It is accomplished by typing cat followed by the output redirection operator and the name of the file to be created, then pressing ENTER and finally simultaneously pressing the CONTROL and d keys. For example, a new file named file1 can be created by typing 
+
+
+cat > file1 
+
+then pressing the ENTER key and finally simultaneously pressing the CONTROL and d keys. 
+
+If a file named file1 already exists, it will be overwritten (i.e., all of its contents will be erased) by the new, empty file with the same name. Thus the cautious user might prefer to instead use the append operator (represented by two successive rightward pointing angular brackets) in order to prevent unintended erasure. That is, 
+
+
+cat >> file1 
+
+That is, if an attempt is made to create a file by using cat and the append operator, and the new file has the same name as an existing file, the existing file is, in fact, preserved rather than overwritten, and any new text is added to the end of the existing file. 
+
+Text can be entered at the time of file creation by typing it in after pressing the ENTER key. Any amount of text can be typed, including text on multiple lines. 
+
+cat can also be used to simultaneously create a new file and transfer to it the data from an existing file. This is accomplished by typing cat, the name of the file from which the output will come, the output redirection operator and the name of the file to be created. Then pressing ENTER causes the new file to be created and written to. For example, typing the following and then pressing ENTER creates a new file named file2 that contains a copy of the contents of file1: 
+
+
+cat file1 > file2 
+
+There is no effect on the contents of file1. (The same thing can, of course, be accomplished just as easily using cp command, which is used to copy files, i.e., cp file1 file2, but the above example does illustrate the great versatility of cat.) 
+
+A slight modification to the above procedure makes it possible to create a new file and write text into it from both another file and the keyboard. A hyphen surrounded by spaces is added before the input file if the typed-in text is to come before the text from the input file, and it is added after the input file if the typed-in text is to go after the text from the input file. Thus, for example, to create a new file file6 that consists of text typed in from the keyboard followed by the contents of file5, first enter the following: 
+
+
+cat - file5 > file6 
+
+Or to create a new file file8 that consists of the contents of file7 followed by text typed in from the keyboard, first enter the following: 
+
+
+cat file7 - > file8 
+
+In either case, then press ENTER to move to a new line and type the desired text on any number of lines. Finally press ENTER once more followed by pressing the CONTROL and d keys simultaneously to execute (i.e., run) the command. 
+
+An example of a practical application for this use of cat is the creation of form letters (or other documents) for which only the top parts (e.g., dates and names) are customized for each recipient. 
+
+The cat Command
+
+
+ 
+
+cat is one of the most frequently used commands on Unix-like operating systems. It has three related functions with regard to text files: displaying them, combining copies of them and creating new ones. 
+
+cat's general syntax is 
+
+
+cat [options] [filenames] [-] [filenames] 
+
+The square brackets indicate that the enclosed items are optional. 
+
+Reading Files 
+
+The most common use of cat is to read the contents of files, and cat is often the most convenient program for this purpose. All that is necessary to open a text file for viewing on the display monitor is to type the word cat followed by a space and the name of the file and then press the ENTER key. For example, the following will display the contents of a file named file1: 
+
+
+cat file1 
+
+The standard output (i.e., default destination of the output) for cat, as is generally the case for other command line (i.e., all-text mode) programs, is the monitor screen. However, it can be redirected from the screen, for example, to another file to be written to that file or to another command to use as the input for that command. 
+
+In the following example, the standard output of cat is redirected using the output redirection operator (which is represented by a rightward pointing angular bracket) to file2: 
+
+
+cat file1 > file2 
+
+That is, the output from cat is written to file2 instead of being displayed on the monitor screen. 
+
+The standard output could instead be redirected using a pipe (represented by a vertical bar) to a filter (i.e., a program that transforms data in some meaningful way) for further processing. For example, if the file is too large for all of the text to fit on the monitor screen simultaneously, as is frequently the case, the text will scroll down the screen at high speed and be very difficult to read. This problem is easily solved by piping the output to the filter less, i.e., 
+
+
+cat file1 | less 
+
+This allows the user to advance the contents of the file one screenful at a time by pressing the space bar and to move backwards by pressing the b key. The user can exit from less by pressing the q key. 
+
+The standard input (i.e., the default source of input data) for cat, as is generally the case for other commands on Unix-like systems, is the keyboard. That is, if no file is specified for it to open, cat will read whatever is typed in on the keyboard. 
+
+Typing the command cat followed by the output redirection operator and a file name on the same line, pressing ENTER to move to the next line, then typing some text and finally pressing ENTER again causes the text to be written to that file. Thus, in the following example the text that is typed on the second line will be written to a file named felines: 
+
+
+cat > felines
+This is not about a feline.
+
+
+The program is terminated and the normal command prompt is restored by pressing the CONTROL and d keys simultaneously. 
+
+Repeating the above example without using a redirection operator and specifying a destination file, i.e., 
+
+
+cat
+This is not about a feline.
+
+
+causes the text to be sent to standard output, i.e., to be repeated on the monitor screen. 
+
+Concatenation 
+
+The second role of cat is concatenation (i.e., stringing together) of copies of the contents of files. (This is the source of cat's curious name.) Because the concatenation occurs only to the copies, there is no effect on the original files. 
+
+For example, the following command will concatenate copies of the contents of the three files file1, file2 and file3: 
+

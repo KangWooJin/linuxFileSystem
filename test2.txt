@@ -1,0 +1,68 @@
+===============================================
+===============================================
+===============================================
+===============================================
+===============================================
+===============================================
+
+
+The Most Popular Operating Systems
+
+
+ 
+
+AIX (Advanced Interactive eXecutive) - a proprietary (i.e., commercial) flavor (i.e., variant) of UNIX launched by IBM in 1990 for use on its mainframe computers. 
+
+Amiga - launched with the pioneering Amiga personal computer in 1985 and continues to be developed today for the PowerPC processor. Amiga features an elegant GUI (graphical user interface) together with some of the flexibility of Unix-like operating systems. 
+ 
+BeOS - developed by Be Incorporated in 1990 as a media operating system that was optimized for digital media (e.g., digital audio, digital video and three-dimensional graphics). BeOS has some Unix-like characteristics, including its use of the bash (the default on Linux) command shell and its directory structure, but it was written in entirely new code. The loyal user base was very disappointed when the company failed commercially, and thus several open source projects, including beunited.org, are under way that are aimed at recreating and updating (e.g., new video drivers) BeOS. 
+ 
+Darwin - an open source derivative of 4.4BSD1 (Berkeley Software Distribution Version 4.4) that serves as the core for the Macintosh OS X. It was originally released in March 1999. There is also a GNU version of Darwin, which is called GNU-Darwin. 
+
+FreeBSD - the most popular of the BSD operating systems, accounting for approximately 80 percent of BSD installations (at least until Darwin came onto the scene). FreeBSD was begun in early 1993 based on 4.3BSD, and the first version, 1.0, was released in December of that year. 
+
+FreeDOS - begun in 1994 by Jim Hall with the goal of becoming a complete, free and fully MS-DOS compatible operating system for x86 (i.e., Intel-compatible) CPUs (i.e., central processing units). 
+
+GNU/Hurd - has been under development by Richard Stallman and his Free Software Foundation (FSF) since 1990. The core component, the Hurd (Hird of Unix-replacing daemons) kernel (i.e., the core of the operating system), is still not completed because of its very ambitious goal: to surpass Unix-like kernels in functionality, security and stability while remaining largely compatible with them. 
+
+HP-UX - a proprietary flavor of UNIX developed by Hewlett-Packard for its HP 9000 series of business servers. HP-UX 1.0 was released in 1986. 
+
+IRIX - a proprietary flavor of UNIX introduced by Silicon Graphics, Incorporated (SGI) in 1982 for applications that use three dimensional visualization and virtual reality. 
+
+JavaOS - developed by Sun Microsystems in 1996 for use in embedded systems (i.e., combinations of circuitry and software built into other products). JavaOS is written primarily in the Java programming language and includes a Java virtual machine (which allows running of any Java program regardless of the type of CPU used) as a fundamental component. 
+ 
+Linux - a high performance, yet completely free, Unix-like operating system launched by Linus Torvalds in 1991. GNU/Linux, as it is also called (because it makes extensive use of utilities and other software developed by the GNU project) is suitable for use on a wide range of platforms and is compatible with both 32 bit and 64 bit processors. More than 200 distributions (i.e., versions) of Linux have been introduced, among the most popular of which are Red Hat, SuSE, Mandrake, Debian and Ubuntu. Although its overall market share is still small, Linux is the most rapidly growing of any major operating system. 
+ 
+Mac OS X - was released by Apple Computer, Inc. in 2001 as a replacement for its aging Mac OS operating system. Now commonly referred to as Mac Classic, the pioneering Mac OS was introduced with the first Macintosh computers in 1984, and it was the first commercial operating system to include a GUI. Mac OS X was developed as an entirely new, BSD-based operating system that runs on a more advanced processor (the PowerPC) but which maintains backward compatibility with the Mac OS (which runs on the Motorola m68k). The Mac OS X consists of Darwin and the Mach microkernel (an advanced kernel developed at Carnegie-Mellon University) together with Apple's proprietary Aqua GUI (which is widely regarded as the best in the industry). Apple is currently completing a transition of its hardware and OS X from the PowerPC to x86 processors. 
+
+Microsoft Windows - the successors to the very popular MS-DOS, it was announced in 1983, and the first version, Windows 1.0, was finally released in 1985. Microsoft Windows encompasses two groups of operating systems (i.e., Windows 95/98/ME/CE and Windows NT/2000/XP) which resemble each other superficially and share compatibility with many of the same application programs but which have very different internal structures. 
+
+MINIX - a small, open source UNIX clone that was first released in January 1987. It was written for use in computer science education by Professor Andrew S. Tanenbaum of Vrije Universiteit in Amsterdam, and it is now best known for its role in inspiring Linus Torvalds to develop Linux. 
+ 
+MS-DOS - a single-user, single-tasking operating system that uses a command line (i.e., text only) user interface. It was launched by Microsoft in 1981 and used on the first personal computers, which were introduced by IBM in the same year. In spite of its very small size and relative simplicity, MS-DOS is one of the most successful operating systems that has been developed to date. 
+
+NetBSD - a derivative of 4.3BSD and launched in 1993, as was the case with FreeBSD. It is possibly the most portable of all operating systems, with the ability to run on more than 50 processors, ranging from the acorn26 to the x86. 
+
+OpenBSD - spun off from NetBSD in 1996 by Theo de Raadt in Calgary, Alberta because of a desire to place even more emphasis on security. OpenBSD has a goal of becoming the most secure operating system, and it claims to have had only one remote hole in the default install in more than eight years. 
+
+Palm OS - developed by PalmSource, Inc. for personal digital assistants (PDAs). Palm OS features flexibility and ease of use. It is the leading PDA operating system, used in more than 36 million mobile devices, and there are more than 20,000 software titles for it, far more than for any other handheld platform. 
+
+QNX - a Unix-like, POSIX-compliant2, real time operating system developed in 1982 that is widely used for mission- and life-critical embedded applications. QNX can also be used as a desktop operating system and features a unique and attractive GUI. Although it is a commercial operating system owned by QNX Software Systems in Ontario, Canada, it is free for personal use. 
+
+SkyOS - a commercial hobbyist operating system developed by Robert Szeleney from 1996. SkyOS has some features that resemble BeOS. It is mostly POSIX compliant, and comes with many of the GNU utilities, including the very highly rated GCC (GNU Compiler Collection). 
+
+Solaris - developed by Sun Microsystems for its SPARC processor and the most widely used proprietary flavor of UNIX. Solaris was introduced as SunOS in 1989, and it was based on BSD Unix. A version for x86 processors is also available. 
+
+TRON (The Real-time Operating system Nucleus) - started by Professor Ken Sakamura of the University of Tokyo in 1984 with the goal of creating an ideal computer architecture. TRON claims to be the world's most widely used operating system because it is embedded in a vast number and variety of electronic products. The TRON specifications are open, but there is no requirement to make source code (i.e., the human-readable form in which the software is originally written) freely available, in contrast to the GPL3. 
+
+Tru64 - a proprietary flavor of UNIX offered by Hewlett-Packard for the 64-bit Alpha processor. It is unusual among Unix-like operating systems in that it is built on the Mach kernel, which is also used in Mac OS X. Tru64 was originally developed by Digital Equipment Corporation (DEC) and called Digital UNIX. 
+
+
+________ 
+1BSD (Berkeley Software Distribution) is a version of UNIX that was developed at the University of California at Berkeley (UCB) in the 1970s. It is the ancestor of the modern BSDs (i.e., FreeBSD, NetBSD, OpenBSD and Darwin) and its technology was also incorporated into the other Unix-like operating systems as well as into other operating systems, including Microsoft Windows. The final version was 4.4BSD. 
+
+2POSIX (Portable Operating System Interface for uniX) is a set of programming interface standards governing how to write source code so that the applications are portable between operating systems. POSIX support was at one time adopted by the U.S. government as a standard requirement for its purchases. Linux and other Unix-like operating systems are POSIX compliant. 
+
+3The GPL (GNU General Public License), the most popular of the many free software licenses, requires that the source code of any GPL-licensed work, or of any work based on a GPL-licensed work, be made freely available. 
+
+
